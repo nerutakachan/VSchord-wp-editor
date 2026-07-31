@@ -1,0 +1,416 @@
+/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css
+destyle.css　(ほぼ全てのデフォルトスタイルをリセット) */
+
+/* ボックスモデルをリセットし、ボーダーを設定 */
+/* ============================================ */
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* ドキュメント */
+/* ============================================ */
+
+/**
+ * 1. 全ブラウザで行の高さを修正。
+ * 2. iOSでの画面の向き変更後のフォントサイズ自動調整を防止。
+ * 3. iOSでリンクの灰色オーバーレイを削除。
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3 */
+}
+
+/* セクション */
+/* ============================================ */
+
+/**
+ * 全ブラウザで余白を削除。
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * IEで`main`要素を一貫して表示。
+ */
+
+main {
+  display: block;
+}
+
+/* 垂直リズム */
+/* ============================================ */
+
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* 見出し */
+/* ============================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* 箇条書きリスト */
+/* ============================================ */
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 定義リスト */
+/* ============================================ */
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* グループ化コンテンツ */
+/* ============================================ */
+
+/**
+ * 1. Firefoxで正しいbox-sizingを設定。
+ * 2. EdgeおよびIEでoverflowを表示。
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. 全ブラウザでフォントサイズの継承とスケーリングを修正。
+ * 2. すべてのブラウザで奇妙な`em`サイズを修正。
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* テキストレベルのセマンティクス */
+/* ============================================ */
+
+/**
+ * IE10でアクティブなリンクの灰色背景を削除。
+ */
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Chrome57以前で下線ボーダーを削除。
+ * 2. Chrome、Edge、IE、Opera、Safariで正しいテキスト装飾を追加。
+ */
+
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Chrome、Edge、Safariで正しいフォントウェイトを追加。
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. フォントサイズの継承とスケーリングを修正。
+ * 2. すべてのブラウザで奇妙な`em`フォントサイズを修正。
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * 全ブラウザで正しいフォントサイズを設定。
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * `sub`および`sup`要素が行の高さに影響を与えないようにする。
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* 置換コンテンツ */
+/* ============================================ */
+
+/**
+ * 垂直方向の配置の問題を防ぐ。
+ */
+
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* フォーム */
+/* ============================================ */
+
+/**
+ * フォームフィールドをリセットしてスタイル可能にする。
+ * 1. iOSを特に含め、フォーム要素をすべてのシステムでスタイル可能に。
+ * 2. text-transformを親から継承。
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * クリック可能な要素に正しいカーソルを設定。
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type="button"]:disabled,
+[type="reset"]:disabled,
+[type="submit"]:disabled {
+  cursor: default;
+}
+
+/**
+ * Firefox向けのアウトライン改善。
+ * inputおよびbutton要素とスタイルを統一。
+ */
+
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * パディングを削除。
+ */
+
+option {
+  padding: 0;
+}
+
+/**
+ * 非表示にリセット。
+ */
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Chrome、Firefox、Operaで垂直位置合わせを修正。
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * IE10+でデフォルトの垂直スクロールバーを削除。
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Chromeでのnumberボタン（増減ボタン）のカーソルスタイルを修正。
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Safariでのアウトラインスタイルを修正。
+ */
+
+[type="search"] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * macOS上のChromeおよびSafariでの内部パディングを削除。
+ */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. iOSおよびSafariでクリック可能タイプがスタイルできない問題を修正。
+ * 2. フォントの継承を修正。
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Firefox用の外観修正。
+ */
+[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/**
+ * クリック可能なラベル。
+ */
+
+label[for] {
+  cursor: pointer;
+}
+
+/* インタラクティブ要素 */
+/* ============================================ */
+
+/*
+ * Edge、IE10+、Firefoxで正しいdisplayを追加。
+ */
+
+details {
+  display: block;
+}
+
+/*
+ * すべてのブラウザで正しいdisplayを追加。
+ */
+
+summary {
+  display: list-item;
+}
+
+/*
+ * 編集可能コンテンツでアウトラインを削除。
+ */
+
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* テーブル */
+/* ============================================ */
+
+/**
+ * ChromeおよびSafariでテーブル枠線の色継承を修正。
+ */
+
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}

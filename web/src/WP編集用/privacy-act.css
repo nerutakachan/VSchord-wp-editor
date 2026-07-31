@@ -1,0 +1,224 @@
+/*  特定商取引始まり  */
+
+.privacy-title{
+	text-align: start;
+	margin-bottom: 0px;
+}
+
+.tokuteisyou-table tr th {
+	text-align: start;
+	min-width: 230px;
+	font-size: 17px;
+}
+
+.tokuteisyou-table tr th,
+.tokuteisyou-table tr td {
+	padding: 20px 30px;
+}
+
+.tokuteisyo_list{
+	padding: 30px 0;
+}
+
+.tokuteisyo_list{
+	border-bottom: 1px #000 solid;
+}
+
+.tokuteisyo_list p{
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	margin-bottom: 20px;
+}
+
+.tokuteisyo_no-marker {
+	list-style-type: none;
+	padding: 0 30px
+}
+
+.tokuteisyo-marker{
+	padding: 0 30px 0 50px;
+}
+.tokuteisyo_no-marker,
+.tokuteisyo-marker{
+	font-size: 16px;
+	letter-spacing: 0.1em;
+	margin: 0;
+}
+
+.tokuteisyo_list ul li {
+	margin: 0px 0;
+}
+
+.tokuteisyo_list ul li:first-child {
+	margin-top: 0;
+}
+
+.tokuteisyo_list ul li:last-child,
+.tokuteisyo_list ul li:only-child {
+	margin-bottom: 0;
+}
+
+.tokuteisyo_list ul:not(:last-of-type) {
+	margin-bottom: 30px;
+}
+
+/*  特定商取引終わり  */
+
+/*  プライバシーポリシー始まり  */
+
+.privacy p,
+.privacy h3{
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+.privacy h3{
+	margin-bottom: 0px;
+	font-weight: bold;
+	border-bottom: none;
+	font-size: 16px!important;
+	text-align: start!important;
+	color: #333333!important;
+/*	margin-bottom: var(--vk-margin-headding-bottom);*/
+}
+
+.privacy h3::after{
+	border-bottom: none;
+}
+
+.privacy p{
+	font-weight: normal;
+}
+
+.privacy ul,
+.privacy ul li,
+.privacy ol,
+.privacy ol li{
+	margin: 0;
+}
+
+.privacy ol{
+	padding-left: 2.3em;
+}
+
+.privacy ul{
+	padding-left: 2.4em;
+}
+
+.privacy article{
+	margin-bottom: 50px;
+}
+
+.privacy article:last-of-type{
+	margin-bottom: 100px;
+}
+
+/*  プライバシーポリシー終わり  */
+
+@media screen and (max-width: 1200px){
+/*  特定商取引始まり  */
+/*  特定商取引終わり  */
+
+/*  プライバシーポリシー始まり  */
+/*  プライバシーポリシー終わり  */
+
+}
+
+@media screen and (max-width: 990px){
+
+/*  特定商取引始まり  */
+
+	.tkuteisyou-box{
+		width: auto;
+	}
+/*  特定商取引終わり  */
+
+/*  プライバシーポリシー始まり  */
+/*  プライバシーポリシー終わり  */
+
+}
+
+@media screen and (max-width: 766px){
+
+/*  特定商取引始まり  */
+	.tokuteisyou-table tr {
+		display: flex;
+		flex-direction: column;
+	}
+	.tokuteisyou-table tr th, .tokuteisyou-table tr td {
+		padding: 15px 30px;
+	}
+/*  特定商取引終わり  */
+
+/*  プライバシーポリシー始まり  */
+/*  プライバシーポリシー終わり  */
+
+}
+
+@media screen and (max-width: 574px){
+
+/*  特定商取引始まり  */
+/*  特定商取引終わり  */
+
+/*  プライバシーポリシー始まり  */
+/*  プライバシーポリシー終わり  */
+
+}
+
+/*  プライバシーポリシーページ始まり  */
+.privacy{
+	margin-top: 96px;
+	margin-bottom: 92px;
+	font-size: 15px;
+}
+
+.privacy p{
+	font-size: 15px!important;
+	line-height: 24px;
+	margin-bottom: 26px;
+}
+
+/* 複数ある場合の「最後」だけに効かせたい場合 */
+.privacy p:last-of-type:not(:only-of-type) {
+  margin-bottom: 0px;
+}
+
+.privacy ol,
+.privacy ul {
+	padding-left: 1.5em;
+}
+
+.privacy h3{
+	color: #fff!important;
+	background-color: #434343;
+	border-top: 4px #64B6E5 solid;
+	width: 100%;
+	line-height: 2em;
+	border-radius: 0;
+	padding-left: 1em;
+	font-size: 24px!important;
+	margin-bottom: 40px;
+}
+
+.privacy h3::first-letter {
+  color: #64B6E5;
+}
+
+.address-list dl{
+	display: flex;
+	margin: 0;
+}
+
+.address-list dl dt{
+	font-weight: normal;
+	width: 5.4em;
+	letter-spacing: 0.1em;
+}
+
+@media screen and (max-width: 1200px){}
+@media screen and (max-width: 990px){}
+@media screen and (max-width: 766px){}
+@media screen and (max-width: 574px){}
+/*  ページ終わり  */

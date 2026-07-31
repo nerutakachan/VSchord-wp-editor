@@ -1,0 +1,81 @@
+/* 投稿ページ・投稿一覧以外でリセットCSS＆擬似要素リセット */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+ol,
+ul,
+li{
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+	line-height: 1;
+	font-size: 1em;
+	border: none;
+	background-color: transparent;
+	font-weight: normal;
+}
+
+/* 擬似要素リセット */
+h1::before,
+h1::after,
+h2::before,
+h2::after,
+h3::before,
+h3::after,
+h4::before,
+h4::after,
+h5::before,
+h5::after,
+p::before,
+p::after,
+a::before,
+a::after {
+  content: none;
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/*　投稿一覧のパンくずリスト非表示　*/
+body:not(.single) .breadcrumb {
+	display: none;
+}
+
+/*  基本設定始め  */
+
+/*  固定ページの上下の余白のみ消す（商品ページや投稿ページの余白は残す）  */
+body.page:not(.woocommerce-cart) .site-body {
+	padding: 0;
+}
+
+/* footerのコピーライト2行目を消す */
+.site-footer-copyright p:nth-of-type(2){
+	display:none;
+}
+
+/* footerのコピーライトのリセット */
+.site-footer-copyright p {
+	text-align: center;
+	margin: 0;
+	font-size: 1em;
+}
+
+.site-footer-copyright {
+	padding: 1em 0;
+}
+
+.site-footer {
+	border-top: none;
+	background-color: antiquewhite;
+	font-size: 1em;
+}
+
+
+

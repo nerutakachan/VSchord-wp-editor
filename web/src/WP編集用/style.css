@@ -1,0 +1,251 @@
+/*
+Theme Name: Lightning Child
+Theme URI: 
+Template: lightning
+Description: 
+Author: 
+Tags: 
+Version: 0.6.0
+*/
+
+/*基本テキスト*/
+
+a:hover{
+	color: #d8d8d8;
+}
+
+h1, h2, h3, h4, h5, p, a {
+	margin: 0;
+	padding: 0;
+	color: #333;
+	text-decoration: none;
+	font-family: hiragino-kaku-gothic-pron,Noto Sans JP, sans-serif;
+}
+
+h1{
+	font-size: 32px;
+	font-weight: normal;
+}
+
+h2{
+	font-size: 32px;
+	border-bottom:none;
+}
+
+h3{
+	color: #FF7D2C;
+	font-size: 24px;
+	border-bottom:none;
+	text-align: center;
+	font-family: "hiragino-kaku-gothic-pron", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", "Noto Sans JP", sans-serif;
+}
+
+body.page h3::after{
+	display: none;
+}
+
+.page-header {
+/*	color: #fff;
+	background: url(/gree/image/head-logo_bg.png);
+	background-repeat: no-repeat;
+	background-size: 200px;
+	background-color: #003552;
+	background-position: left 8.5% top 0px;*/
+}
+
+.page-header-title{
+	color: #fff;
+}
+
+.page-header-title {
+	position: relative;
+	padding-bottom: 0px;
+	display: inline-block;
+	text-align: center;
+}
+
+.page-header-title::after {
+	content: "";
+	position: absolute;
+	bottom: -1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 94px;
+	height: 6px;
+	background-image: radial-gradient(circle, #ee8c34 2px, transparent 3px);
+	background-position: center;
+	background-repeat: repeat-x;
+	background-size: 11px 6px;
+}
+
+.entry-title {
+	margin-bottom: var(--vk-margin-meta);
+	color: #91BE64;
+}
+
+
+/*基本テキスト終わり*/
+
+/* グローバルメニュー */
+
+.site-header-logo a span{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.site-header-logo {
+	text-align: left;
+	padding-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin: 10px 0 10px 0!important;
+}
+@media (max-width: 991.98px) {
+	.site-header-logo img {
+		max-height: 40px;
+	}
+}
+
+@media (min-width: 992px) {
+	.device-pc .global-nav-list>li>a {
+		padding: 14px 0.6em;
+	}
+}
+
+@media (min-width: 992px) {
+	.global-nav--layout--float-right .global-nav-list li:last-of-type a{
+		padding-right: 0;
+	}
+}
+
+.global-nav-list>li>ul.sub-menu {
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	margin-left: 0;
+	background-color: #FAF7EF;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+	left: 0;
+	margin-left: 0;
+	width: 200px;
+}
+
+.global-nav-list>li:before {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	content: "";
+	width: 0;
+	border-bottom: 1px solid #FAF7EF;
+	transition: all .5s 
+ease-out;
+}
+
+.global-nav-list>li.menu-item-has-children::after {
+	transition: all .2s 
+ease-out;
+	content: "";
+	position: absolute;
+	padding: 0;
+	bottom: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 10px solid transparent;
+	z-index: 1000;
+	opacity: 0;
+	border-bottom-color: #FAF7EF;
+}
+
+.global-nav-list .sub-menu li a:focus-within,
+.global-nav-list .sub-menu li a:hover {
+	background-color: #e9e3d2;
+}
+
+.global-nav-list .sub-menu li a,
+.global-nav-list .sub-menu li a:hover {
+	color: #333;
+	font-weight: bold;
+}
+
+.global-nav-list .sub-menu li a {
+	padding: 0.3em 1em;
+	border-bottom: 1px solid rgba(255, 255, 255, .15);
+	display: block;
+	font-size: 13px;
+}
+
+/* グローバルメニュー終わり */
+
+/* 背景の横幅一杯にする始まり */
+
+.site-footer-copyright,
+.contact-area,
+.bg-f {
+	position: relative;
+	z-index: 0;
+}
+
+.bg-f::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 100vw;
+	height: 100%;
+	transform: translateX(-50%);
+	z-index: -1;
+}
+
+.baseball::after{
+	background: url(/gree/image/off.png) no-repeat;
+	background-position: right 10vw bottom 2em;
+	background-size: 10vw;
+	z-index: -1;
+	pointer-events: none; 
+}
+
+/* 背景の横幅一杯にする終わり */
+
+/* ボタン設定 */
+.btn{
+	border-radius: 1em;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	line-height: normal;
+}
+/* ボタン設定終わり */
+
+/*フォントのリセット*/
+
+/*  新着情報の情報始まり  */
+/*  新着情報の情報終わり  */
+
+/*  footer設定始まり  */
+/* footerのコピーライト2行目を消す */
+.site-footer-copyright p:nth-of-type(2){
+	display:none;
+}
+
+.site-footer {
+	border-top: none;
+}
+
+/*  footer設定終わり  */
+
+/* 各ページヘッダー */
+
+/*  バナーゾーン始まり  */
+/*  バナーゾーン終わり  */
+
+/*  基本設定始まり  */
+/*  基本設定終わり  */
+
+/*  TOPページ始まり  */
+/*の始まり*/
+/*の終わり*/
+@media screen and (max-width: 1200px){}
+@media screen and (max-width: 990px){}
+@media screen and (max-width: 766px){}
+@media screen and (max-width: 574px){}
+/*  ページ終わり  */
