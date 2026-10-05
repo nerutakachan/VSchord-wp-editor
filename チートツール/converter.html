@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" media="all" href="style.css" />
+	<title>チートツール</title>
+  </head>
+<body>
+
+<div class="list-nav">
+	<ul>
+		<li><a href="index.html">各種変換</a></li>
+		<li><a href="converter.html">構造化データ作成</a></li>
+	</ul>
+</div>
+<div class="container">
+  <h1>Google しごと検索 構造化データ作成・編集ツール</h1>
+
+  <!-- 既存JSONインポートエリア -->
+  <div class="import-box">
+    <h2>既存の構造化データ（JSON-LD）を読み込んで編集</h2>
+    <textarea id="jsonInput" style="min-height: 80px;" placeholder="ここに既存の <script type='application/ld+json'>...</script> や JSON テキスト（配列・@graph含む）を貼り付けてください"></textarea>
+    <div style="margin-top: 8px;">
+      <button type="button" class="btn btn-import" onclick="importJSON()">データを読み込んでフォームに反映</button>
+    </div>
+  </div>
+
+  <!-- 求人入力フォーム -->
+  <form id="jobForm">
+    <div class="form-group">
+      <label>求人タイトル（職種名）<span class="req">*</span></label>
+      <input type="text" id="title" placeholder="例: Webデザイナー（正社員）">
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <label>会社名・組織名<span class="req">*</span></label>
+        <input type="text" id="companyName" placeholder="例: 株式会社サンプル">
+      </div>
+      <div class="col form-group">
+        <label>会社WebサイトURL (sameAs)</label>
+        <input type="text" id="companyUrl" placeholder="例: https://example.com/">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>ロゴ画像URL (logo)</label>
+      <input type="text" id="logoUrl" placeholder="例: https://example.com/logo.png">
+    </div>
+
+    <div class="form-group">
+      <label>雇用形態 (employmentType)<span class="req">*</span></label>
+      <select id="employmentType">
+        <option value="FULL_TIME">正社員 (FULL_TIME)</option>
+        <option value="PART_TIME">アルバイト・パート (PART_TIME)</option>
+        <option value="CONTRACTOR">契約社員 (CONTRACTOR)</option>
+        <option value="TEMPORARY">派遣社員 (TEMPORARY)</option>
+        <option value="INTERN">インターン (INTERN)</option>
+        <option value="VOLUNTEER">ボランティア (VOLUNTEER)</option>
+        <option value="PER_DIEM">日雇い・随時 (PER_DIEM)</option>
+        <option value="OTHER">その他 (OTHER)</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <label>給与単位 (unitText)<span class="req">*</span></label>
+        <select id="unitText">
+          <option value="DAY">日給 (DAY)</option>
+          <option value="MONTH">月給 (MONTH)</option>
+          <option value="HOUR">時給 (HOUR)</option>
+          <option value="WEEK">週給 (WEEK)</option>
+          <option value="YEAR">年収 (YEAR)</option>
+        </select>
+      </div>
+      <div class="col form-group">
+        <label>給与下限 (minValue)</label>
+        <input type="number" id="minValue" placeholder="例: 9000">
+      </div>
+      <div class="col form-group">
+        <label>給与上限 (maxValue)</label>
+        <input type="number" id="maxValue" placeholder="例: 20000">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <label>郵便番号 (postalCode)</label>
+        <input type="text" id="postalCode" placeholder="例: 434-0044">
+      </div>
+      <div class="col form-group">
+        <label>都道府県 (addressRegion)<span class="req">*</span></label>
+        <input type="text" id="addressRegion" placeholder="例: 静岡県">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <label>市区町村 (addressLocality)<span class="req">*</span></label>
+        <input type="text" id="addressLocality" placeholder="例: 浜松市浜名区">
+      </div>
+      <div class="col form-group">
+        <label>町名・番地など (streetAddress)<span class="req">*</span></label>
+        <input type="text" id="streetAddress" placeholder="例: 内野1019-1">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <label>掲載開始日 (datePosted)<span class="req">*</span></label>
+        <input type="date" id="datePosted">
+      </div>
+      <div class="col form-group">
+        <label>掲載終了日 (validThrough)</label>
+        <input type="date" id="validThrough">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>仕事内容・詳細 (description)<span class="req">*</span></label>
+      <textarea id="description">【雇用形態】
+正社員
+
+【職種】
+作業スタッフ
+
+【仕事内容】
+・仕事内容を入れてください。
+
+【必須条件】
+・普通自動車運転免許（AT限定OK）
+
+【あれば尚可】
+・準中型自動車免許 または 5t限定準中型自動車免許
+
+【勤務地】
+株式会社テスト
+静岡県浜松市浜名区内野1019-1 2F
+※転勤なし
+※車通勤OK（無料駐車場あり）
+
+【勤務時間】
+9:00 ～ 18:00（実働8時間 / 休憩1時間）
+※残業なし
+
+【給与】
+日給 9,000円 ～ 20,000円
+※仕事内容に応じて給与を決定します。
+
+・昇給あり
+・賞与あり
+
+【休日・休暇】
+完全週休2日制（年間休日数105日）
+年末年始休暇、GW休暇、夏季休暇、有給休暇
+
+【待遇・福利厚生】
+・社会保険完備（雇用、労災、健康、厚生年金）
+・交通費実費支給（月2万円まで）
+・試用期間3ヶ月あり（同条件）
+
+※応募前・面接時の職場見学も可能です◎</textarea>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn" onclick="generateJSONLD()">構造化データ（テキスト）を生成</button>
+      <button type="button" class="btn btn-secondary" style="flex: 0.3;" onclick="clearForm()">クリア</button>
+    </div>
+  </form>
+
+  <!-- 出力エリア -->
+  <div class="output-section">
+    <div class="output-header">
+      <label style="margin: 0; font-weight: bold;">生成結果（JSON-LDテキストデータ）</label>
+      <button type="button" class="btn-copy" onclick="copyOutput()">コピー</button>
+    </div>
+    <textarea id="jsonOutput" class="code-output" readonly placeholder="「構造化データを生成」を押すとここにコードが出力されます"></textarea>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

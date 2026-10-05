@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" media="all" href="style.css" />
+	<title>チートツール</title>
+  </head>
+<body>
+
+<div class="list-nav">
+	<ul>
+		<li><a href="index.html">各種変換</a></li>
+		<li><a href="converter.html">構造化データ作成</a></li>
+	</ul>
+</div>
+<div class="container">
+  <article>
+		<h2>アスペクト比変換</h2>
+		<div class="flex-box">
+			<div class="aspect-input">
+				<div class="form-group">
+					<label for="aspectWidth">横幅 (px)</label>
+					<input type="number" id="aspectWidth" placeholder="例: 520" oninput="convertAspectRatio()">
+				</div>
+				<div class="form-group">
+					<label for="aspectHeight">高さ (px)</label>
+					<input type="number" id="aspectHeight" placeholder="例: 280" oninput="convertAspectRatio()">
+				</div>
+			</div>
+			<div class="right-box">
+				<pre id="aspectOutput"></pre>
+			</div>
+		</div>
+	</article>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
