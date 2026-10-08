@@ -234,6 +234,26 @@ textarea.code-output {
   align-items: center;
   margin-bottom: 8px;
 }
+/* 整頓オプション調整用 */
+.option-box {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.checkbox-group {
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+.checkbox-group:last-child {
+  margin-bottom: 0;
+}
+.label-checkbox {
+  font-weight: normal;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+.hidden {
+  display: none;
+}
 @media screen and (max-width: 1200px){}
 @media screen and (max-width: 990px){}
 @media screen and (max-width: 766px){
