@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>コード整頓ツール | VSchord Cheat Tool</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<!-- メインナビゲーション -->
+		<nav class="list-nav">
+			<ul>
+				<li><a href="index.html">各種変換</a></li>
+				<li><a href="converter.html">構造化データ作成</a></l>
+				<li class="active"><a href="formatter.html">コード整頓</a></li>
+			</ul>
+		</nav>
+
+		<h1>コード整頓ツール</h1>
+
+		<!-- サブタブ：言語切り替え -->
+		<div class="sub-tabs">
+			<button type="button" class="tab-btn active" onclick="switchLang('html', this)">HTML</button>
+			<button type="button" class="tab-btn" onclick="switchLang('css', this)">CSS</button>
+			<button type="button" class="tab-btn" onclick="switchLang('js', this)">JavaScript</button>
+		</div>
+
+		<!-- 左右2カラム構造 -->
+		<label id="inputLabel">HTMLコードを入力</label>
+		<div class="flex-box">
+			<!-- 左カラム：入力 -->
+			<div class="left-box">
+				<textarea id="rawCode" class="code-output" placeholder="ここに整頓したいコードを貼り付けてください..."></textarea>
+				<div class="btn-group">
+					<button type="button" class="btn" onclick="formatCode()">整頓実行</button>
+					<button type="button" class="btn btn-secondary" onclick="clearCode()">クリア</button>
+				</div>
+			</div>
+			<!-- 右カラム：出力right-box -->
+			<div class="">
+				<textarea id="formattedCode" class="code-output" readonly placeholder="ここに整頓後のコードが出力されます..."></textarea>
+				<div class="output-header">
+					<label>整頓結果</label>
+					<button type="button" class="btn-copy" onclick="copyCode()">コピー</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/formatter.js"></script>
+</body>
+</html>

@@ -190,6 +190,50 @@ textarea.code-output {
   font-size: 13px;
   line-height: 1.5;
 }
+/* サブタブ切り替え用 */
+.sub-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e8eaed;
+  padding-bottom: 10px;
+}
+.tab-btn {
+  background-color: #f1f3f4;
+  color: #5f6368;
+  border: none;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn:hover {
+  background-color: #e8eaed;
+}
+.tab-btn.active {
+  background-color: #1a73e8;
+  color: #ffffff;
+}
+/* ボタン配置調整 */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.btn-secondary {
+  background-color: #5f6368;
+}
+.btn-secondary:hover {
+  background-color: #3c4043;
+}
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
 @media screen and (max-width: 1200px){}
 @media screen and (max-width: 990px){}
 @media screen and (max-width: 766px){
