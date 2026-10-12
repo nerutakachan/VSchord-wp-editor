@@ -157,7 +157,21 @@ textarea {
   border-top: 2px solid #e8eaed;
   padding-top: 20px;
 }
-
+.link-box{
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+}
+.link-box a{
+	background-color: #34a853;
+	color: #fff;
+	padding: 1em 2em;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 0.5em;
+	line-height: 1;
+	font-size: 1rem;
+}
 .output-header {
   display: flex;
   justify-content: space-between;
@@ -254,6 +268,7 @@ textarea.code-output {
 .hidden {
   display: none;
 }
+
 @media screen and (max-width: 1200px){}
 @media screen and (max-width: 990px){}
 @media screen and (max-width: 766px){

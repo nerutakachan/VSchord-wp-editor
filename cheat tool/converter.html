@@ -117,7 +117,22 @@
         <input type="date" id="validThrough">
       </div>
     </div>
+		
+		<div class="row">
+			<div class="col form-group">
+				<label>業界 (industry)</label>
+				<input type="text" id="industry" placeholder="例: 製造,医療,福祉,飲食・サービス,小売,建設">
+			</div>
+			<div class="col form-group">
+				<label>職種カテゴリ (occupationalCategory)</label>
+				<input type="text" id="occupationalCategory" placeholder="例: 営業,技術職,接客・販売,軽作業・現場">
+			</div>
+		</div>
 
+    <div class="form-group">
+      <label>応募者の所在地要件 (applicantLocationRequirements - 国コード)</label>
+      <input type="text" id="applicantLocationRequirements" value="JP" placeholder="例: JP">
+    </div>
     <div class="form-group">
       <label>仕事内容・詳細 (description)<span class="req">*</span></label>
       <textarea id="description">【雇用形態】
@@ -178,6 +193,13 @@
     </div>
     <textarea id="jsonOutput" class="code-output" readonly placeholder="「構造化データを生成」を押すとここにコードが出力されます"></textarea>
   </div>
+	<div>
+		<h2>テストサイト</h2>
+		<div class="link-box">
+			<a href="https://search.google.com/test/rich-results?hl=ja" target="_blank">Google リッチリザルト テスト</a>
+			<a href="https://validator.schema.org/">Schema Markup Validator</a>
+		</div>
+	</div>
 </div>
 <script src="js/script.js"></script>
 </body>

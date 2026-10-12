@@ -29,6 +29,9 @@ function generateJSONLD() {
 	const datePosted = document.getElementById('datePosted').value;
 	const validThrough = document.getElementById('validThrough').value;
 	const description = document.getElementById('description').value.trim();
+	const industry = document.getElementById('industry').value.trim();
+	const occupationalCategory = document.getElementById('occupationalCategory').value.trim();
+	const applicantLocationRequirements = document.getElementById('applicantLocationRequirements').value.trim();
 
 	// 必須項目チェック
 	if (!title || !companyName || !description || !datePosted || !addressRegion || !addressLocality || !streetAddress) {
@@ -58,7 +61,7 @@ function generateJSONLD() {
 	}
 
 	// description の改行を <br> に変換しエスケープ
-	const formattedDescription = escapeHtml(description).replace(/\r?\n/g, '<br>');
+	const formattedDescription = description;
 
 	// ベースのスキーマ構築
 	const schema = {
@@ -67,7 +70,7 @@ function generateJSONLD() {
 		"title": title,
 		"description": formattedDescription,
 		"datePosted": datePosted,
-		"employmentType": [employmentType],
+		"employmentType": employmentType,
 		"hiringOrganization": {
 			"@type": "Organization",
 			"name": companyName
@@ -118,6 +121,20 @@ function generateJSONLD() {
 		schema.validThrough = validThrough;
 	}
 
+	// 業界 (industry)、職種カテゴリ (occupationalCategory)、応募者の所在地要件 (applicantLocationRequirements)
+	if (industry) {
+		schema.industry = industry;
+	}
+	if (occupationalCategory) {
+		schema.occupationalCategory = occupationalCategory;
+	}
+	if (applicantLocationRequirements) {
+		schema.applicantLocationRequirements = {
+			"@type": "Country",
+			"name": applicantLocationRequirements
+		};
+	}
+
 	const jsonText = JSON.stringify(schema, null, 2);
 	document.getElementById('jsonOutput').value = `<script type="application/ld+json">\n${jsonText}\n<\/script>`;
 }
@@ -155,6 +172,10 @@ function importJSON() {
 				.replace(/&#039;/g, "'")
 				.replace(/&amp;/g, '&');
 		}
+
+		if (data.description) {
+			document.getElementById('description').value = data.description;
+		}
 		
 		if (data.hiringOrganization) {
 			if (data.hiringOrganization.name) document.getElementById('companyName').value = data.hiringOrganization.name;
@@ -167,10 +188,22 @@ function importJSON() {
 			if (data.hiringOrganization.logo) document.getElementById('logoUrl').value = data.hiringOrganization.logo;
 		}
 
-		// employmentType (配列・文字列対応)
+		// employmentType (配列・文字列両対応)
 		if (data.employmentType) {
-			const emp = Array.isArray(data.employmentType) ? data.employmentType : data.employmentType;
+			const emp = Array.isArray(data.employmentType) ? data.employmentType[0] : data.employmentType;
 			if (emp) document.getElementById('employmentType').value = emp;
+		}
+
+		// 追加項目の読み込み
+		if (data.industry) {
+			document.getElementById('industry').value = data.industry;
+		}
+		if (data.occupationalCategory) {
+			document.getElementById('occupationalCategory').value = data.occupationalCategory;
+		}
+		if (data.applicantLocationRequirements) {
+			const appReq = data.applicantLocationRequirements;
+			document.getElementById('applicantLocationRequirements').value = typeof appReq === 'object' && appReq.name ? appReq.name : appReq;
 		}
 
 		// 給与情報の読み込み (数値/文字列対応)
