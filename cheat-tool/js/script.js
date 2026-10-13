@@ -32,6 +32,8 @@ function generateJSONLD() {
 	const industry = document.getElementById('industry').value.trim();
 	const occupationalCategory = document.getElementById('occupationalCategory').value.trim();
 	const applicantLocationRequirements = document.getElementById('applicantLocationRequirements').value.trim();
+	const directApplyElem = document.getElementById('directApply');
+	const directApply = directApplyElem ? directApplyElem.checked : false;
 
 	// 必須項目チェック
 	if (!title || !companyName || !description || !datePosted || !addressRegion || !addressLocality || !streetAddress) {
@@ -134,7 +136,7 @@ function generateJSONLD() {
 			"name": applicantLocationRequirements
 		};
 	}
-
+	if (directApply) { schema.directApply = true; }
 	const jsonText = JSON.stringify(schema, null, 2);
 	document.getElementById('jsonOutput').value = `<script type="application/ld+json">\n${jsonText}\n<\/script>`;
 }
@@ -228,6 +230,10 @@ function importJSON() {
 
 		if (data.datePosted) document.getElementById('datePosted').value = data.datePosted;
 		if (data.validThrough) document.getElementById('validThrough').value = data.validThrough;
+		const directApplyElem = document.getElementById('directApply');
+		if (directApplyElem) {
+				directApplyElem.checked = Boolean(data.directApply);
+		}
 
 		alert('データを正常に読み込みました！');
 		generateJSONLD();
@@ -240,6 +246,10 @@ function importJSON() {
 function clearForm() {
 	document.getElementById('jobForm').reset();
 	document.getElementById('datePosted').value = new Date().toISOString().split('T');
+	const directApplyElem = document.getElementById('directApply');
+	if (directApplyElem) {
+			directApplyElem.checked = false;
+	}
 	document.getElementById('jsonOutput').value = '';
 }
 

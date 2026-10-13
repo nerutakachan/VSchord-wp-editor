@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>コード整頓ツール</title>
+		<link rel="stylesheet" href="style.css">
+		<!-- js-beautify CDN -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-css.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-html.min.js"></script>
+	</head>
+	<body>
+		<div class="list-nav">
+			<ul>
+				<li><a href="index.html">各種変換</a></li>
+				<li><a href="converter.html">構造化データ作成</a></l>
+				<li class="active"><a href="formatter.html">コード整頓</a></li>
+			</ul>
+		</div>
+		<div class="container">
+			<h1>コード整頓ツール</h1>
+			<!-- 言語切り替えタブ -->
+			<div class="sub-tabs">
+				<button class="tab-btn active" onclick="switchLang('html', this)">HTML</button>
+				<button class="tab-btn" onclick="switchLang('css', this)">CSS</button>
+				<button class="tab-btn" onclick="switchLang('js', this)">JavaScript</button>
+			</div>
+			<!-- 整形オプション -->
+			<div class="import-box option-box">
+				<h2>整形オプション</h2>
+				<div class="row">
+					<div class="col control__inner">
+						<label for="indentType" class="control__label">インデントのタイプ:</label>
+						<select id="indentType" class="control__select" onchange="toggleIndentSize()">
+							<option value="space" selected>スペース</option>
+							<option value="tab">タブ</option>
+						</select>
+					</div>
+					<div class="col control__inner" id="indentSizeWrapper">
+						<label for="indentSize" class="control__label">インデントのサイズ:</label>
+						<select id="indentSize" class="control__select">
+							<option value="2">2</option>
+							<option value="4" selected>4</option>
+						</select>
+					</div>
+					<div class="col checkbox-group ">
+						<label class="label-checkbox" for="preserveNewlines">
+							<input type="checkbox" id="preserveNewlines" class="control__input"> 元の改行を保持する </label>
+						<label class="label-checkbox" for="removeEmptyLines">
+								<input type="checkbox" id="removeEmptyLines" class="control__input"> ブロック間の空行を無くす</label>
+					</div>
+				</div>
+			</div>
+			<!-- 入出力エリア -->
+			<div class="flex-box">
+				<div>
+					<label id="inputLabel" for="inputHtml">HTMLコードを入力:</label>
+					<textarea id="inputHtml" class="formatting__textarea" placeholder="ここにコードを入力してください"></textarea>
+				</div>
+				<div>
+					<div>
+						<label for="outputHtml">整形後のコード:</label>
+					</div>
+					<div class="textarea-popup-box">
+						<textarea id="outputHtml" class="code-output formatting__textarea" readonly></textarea>
+						<div class="formatting__popup hidden" id="popupMessage">コピーしました！</div>
+						<button class="btn-copy" onclick="copyCode()">コピー</button>
+					</div>
+				</div>
+			</div>
+			<!-- アクションボタン -->
+			<div class="btn-group">
+				<button class="btn" onclick="formatCode()">コードを整形する</button>
+				<button class="btn btn-secondary" onclick="clearCode()">クリア</button>
+			</div>
+		</div>
+		<script src="js/formatter.js"></script>
+	</body>
+</html>
