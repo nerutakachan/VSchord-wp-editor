@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" media="all" href="style.css" />
+	<title>チートツール</title>
+  </head>
+<body>
+
+<div class="list-nav">
+	<ul>
+		<li><a href="index.html">各種変換</a></li>
+		<li><a href="converter.html">構造化データ作成</a></l>
+		<li class="active"><a href="formatter.html">コード整頓</a></li>
+		<li class="active"><a href="compression.html">圧力単位変換</a></li>
+	</ul>
+</div>
+<div class="container changer-box">
+	<article id="compressionArticle">
+		<h2>エンジン圧縮圧力測定</h2>
+		<div class="flex-box engine-conp-box">
+			<div>
+				<div class="form-group">
+					<label for="compUnit">基準値の単位</label>
+					<select id="compUnit" onchange="changeCompUnit()">
+						<option value="kg" selected>kg/cm²</option>
+						<option value="kpa">kPa</option>
+					</select>
+				</div>
+				<div class="row">
+					<div class="col form-group">
+						<label for="stdVal">基準値</label>
+						<input type="number" step="0.1" id="stdVal" value="12.6" oninput="calcCompression()">
+					</div>
+					<div class="col form-group">
+						<label for="limitVal">限度値</label>
+						<input type="number" step="0.1" id="limitVal" value="9.0" oninput="calcCompression()">
+					</div>
+					<div class="col form-group">
+						<label for="diffLimit">差限度</label>
+						<input type="number" step="0.1" id="diffLimit" value="1.0" oninput="calcCompression()">
+					</div>
+				</div>
+				<div class="row engine-conp-data-box">
+					<div class="col form-group">
+						<label for="cyl1">#1 (bar)</label>
+						<input type="number" step="0.1" id="cyl1" placeholder="例: 12.5" enterkeyhint="next" oninput="calcCompression()">
+					</div>
+					<div class="col form-group">
+						<label for="cyl2">#2 (bar)</label>
+						<input type="number" step="0.1" id="cyl2" placeholder="例: 12.3" enterkeyhint="next" oninput="calcCompression()">
+					</div>
+					<div class="col form-group">
+						<label for="cyl3">#3 (bar)</label>
+						<input type="number" step="0.1" id="cyl3" placeholder="例: 12.4" enterkeyhint="next" oninput="calcCompression()">
+					</div>
+					<div class="col form-group">
+						<label for="cyl4">#4 (bar)</label>
+						<input type="number" step="0.1" id="cyl4" placeholder="例: 12.1" enterkeyhint="done" oninput="calcCompression()">
+					</div>
+				</div>
+			</div>
+			<div class="right-box">
+				<div id="compressionOutput">各シリンダーの圧力（bar）を入力してください。</div>
+			</div>
+		</div>
+	</article>
+</div>
+<script src="js/script.js"></script>
+<script src="js/compression.js"></script>
+</body>
+</html>

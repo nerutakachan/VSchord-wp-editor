@@ -22,6 +22,7 @@ body {
 h2{
 	font-size: 1.5rem;
 	margin-top: 0;
+	line-height: 1;
 }
 .list-nav,
 .list-nav ul {
@@ -405,6 +406,24 @@ span{
 	padding: 1.5rem;
 	border-radius: 8px;
 }
+/* 圧縮圧力測定用（一時ツール） */
+.comp-title {
+	font-weight: bold;
+	margin-top: 12px;
+	margin-bottom: 6px;
+}
+.comp-title:first-child {
+	margin-top: 0;
+}
+.comp-row {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 4px;
+}
+.comp-ng {
+	color: #d93025;
+	font-weight: bold;
+}
 @media screen and (max-width: 574px) {
 	.engine-conp-box > div{
 		width: 100%;
@@ -421,5 +440,16 @@ span{
 		white-space: pre-wrap;
 		word-break: break-all;
 		line-height: 1.2;
+	}
+	.engine-conp-box .right-box{
+		min-height: 258.69px;
+	}
+	input[type="text"],
+	input[type="date"],
+	input[type="number"],
+	select,
+	textarea {
+		padding: 0.3em;
+		font-size: 1em;
 	}
 }

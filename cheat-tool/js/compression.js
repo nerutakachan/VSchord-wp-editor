@@ -19,13 +19,12 @@ function changeCompUnit() {
 
 // 圧縮圧力の計算・判定処理
 function calcCompression() {
-    const unit = document.getElementById('compUnit').value; // 'kg' または 'kpa'
+    const unit = document.getElementById('compUnit').value;
     const unitLabel = unit === 'kpa' ? 'kPa' : 'kg/cm²';
 
     const limitVal = parseFloat(document.getElementById('limitVal').value);
     const diffLimit = parseFloat(document.getElementById('diffLimit').value);
 
-    // 4気筒の値を取得
     const cylInputs = [
         document.getElementById('cyl1').value,
         document.getElementById('cyl2').value,
@@ -35,57 +34,84 @@ function calcCompression() {
 
     const outElem = document.getElementById('compressionOutput');
 
-    // 1つでも未入力がある場合の案内
+    // 未入力チェック
     if (cylInputs.some(val => val === '' || isNaN(parseFloat(val)))) {
-        outElem.textContent = '4気筒すべてに数値（bar）を入力してください。';
+        outElem.innerHTML = '各シリンダーの圧力（bar）を入力してください。';
         return;
     }
 
     const convertedValues = [];
     let allNormal = true;
-    let lines = [];
+    let html = '';
 
-    lines.push('【換算結果】');
+    html += '<div class="comp-title">【換算結果】</div>';
 
     cylInputs.forEach((rawVal, idx) => {
         const barVal = parseFloat(rawVal);
-        // bar からの換算 (1 bar = 1.01972 kg/cm² / 1 bar = 100 kPa)
         let convVal = unit === 'kpa' ? (barVal * 100) : (barVal * 1.01972);
         convVal = Math.round(convVal * 100) / 100;
         convertedValues.push(convVal);
 
-        // 各気筒の限度値判定
         let status = '正常';
+        let statusClass = '';
         if (!isNaN(limitVal) && convVal < limitVal) {
             status = '異常（限度未満）';
+            statusClass = 'comp-ng';
             allNormal = false;
         }
 
-        lines.push(`#${idx + 1}: ${convVal.toFixed(2)} ${unitLabel} [ ${status} ]`);
+        html += `<div class="comp-row">
+                    <span>#${idx + 1}: ${convVal.toFixed(2)} ${unitLabel}</span>
+                    <span class="${statusClass}">[ ${status} ]</span>
+                 </div>`;
     });
 
-    lines.push('');
-    lines.push('【気筒間圧力差】');
+    html += '<div class="comp-title">【気筒間圧力差】</div>';
 
     const maxVal = Math.max(...convertedValues);
     const minVal = Math.min(...convertedValues);
     const diff = Math.round((maxVal - minVal) * 100) / 100;
 
     let diffStatus = '正常';
+    let diffClass = '';
     if (!isNaN(diffLimit) && diff > diffLimit) {
-        diffStatus = '異常（差過大）';
+        diffStatus = '異常';
+        diffClass = 'comp-ng';
         allNormal = false;
     }
 
-    lines.push(`最大差: ${diff.toFixed(2)} ${unitLabel} [ ${diffStatus} ]`);
+    html += `<div class="comp-row">
+                <span>最大差: ${diff.toFixed(2)} ${unitLabel}</span>
+                <span class="${diffClass}">[ ${diffStatus} ]</span>
+             </div>`;
 
-    lines.push('');
-    lines.push('【総合判定】');
+    html += '<div class="comp-title">【総合判定】</div>';
     if (allNormal) {
-        lines.push('良好');
+        html += '<div>良好</div>';
     } else {
-        lines.push('要点検');
+        html += '<div class="comp-ng">要点検</div>';
     }
 
-    outElem.textContent = lines.join('\n');
+    outElem.innerHTML = html;
 }
+// Enterキー（確定）で次の気筒へ自動ジャンプ
+document.addEventListener('DOMContentLoaded', () => {
+    const cylIds = ['cyl1', 'cyl2', 'cyl3', 'cyl4'];
+    cylIds.forEach((id, index) => {
+        const elem = document.getElementById(id);
+        if (!elem) return;
+        elem.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (index < cylIds.length - 1) {
+                    // 次の気筒へカーソルを移動
+                    const nextElem = document.getElementById(cylIds[index + 1]);
+                    if (nextElem) nextElem.focus();
+                } else {
+                    // 最後の#4ならキーボードを閉じる
+                    elem.blur();
+                }
+            }
+        });
+    });
+});
